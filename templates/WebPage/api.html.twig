@@ -1,0 +1,27 @@
+{% extends 'WebPage/base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align: center;">API & WebPage Routes</h1>
+
+    <p style="text-align: center; margin-top: 20px; color: #380608;">
+        <a href="{{ path('api_quote') }}">Se JSON meddelande från /api/quote</a>
+    </p>
+
+    <table border="1" cellpadding="10" cellspacing="0" style="margin: auto; color: rgb(43, 247, 70);">
+        <thead>
+            <tr>
+                <th>Route Name</th>
+                <th>Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for route in routes %}
+                <tr>
+                    <td>{{ route.name }}</td>
+                    <td><code>{{ route.path }}</code></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

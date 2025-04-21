@@ -103,11 +103,10 @@ class Lucky extends AbstractController
 
     }
 
-    #[Route("/api/quote")]
-
-    public function jsonNumber(): Response
+    #[Route("/api/quote", name: "api_quote")]
+    public function jsonNumber(): JsonResponse
     {
-        $dagens_uppgift = random_int(1, 12);
+        $monthNum = random_int(1, 12);
 
         $months = [
             1 => 'Januari',
@@ -124,31 +123,15 @@ class Lucky extends AbstractController
             12 => 'December',
         ];
 
-        // Måndadsnamns på svenska
-        $monthName = $months[$dagens_uppgift];
+        $monthName = $months[$monthNum];
+        $day = date('Y-m-d');
+        $time = date('H:i:s');
 
-        // Dagens tid och datum
-        $day = date('Y-m-d');   // Format: YYYY-MM-DD
-        $time = date('H:i:s');  // Format: HH:MM:SS
+        $message = "Viktigt meddelande!!! Idag är det $day, klockan $time! Planera din semester för $monthName månaden nu!!";
 
-        // Meddelanden
-        $message1 = "Viktigt meddelande!!!";
-        $message2 = "Idag är det $day, klockan $time!";
-        $message3 = "Planera din semester för $monthName månaden nu!!";
-
-        $message = $message1 . " " . $message2 . " " . $message3;
-
-        $data = [
-            'Semester planering för månad' => $dagens_uppgift,
-            'Planerings meddelande' => 'Planera din semester nu!!',
-        ];
-
-        // JSON data
-        $data = [
-            'Semester planering för månad' => $dagens_uppgift,
+        return new JsonResponse([
+            'Semester planering för månad' => $monthNum,
             'Planerings meddelande' => $message,
-        ];
-
-        return new JsonResponse($data);
+        ]);
     }
 }
