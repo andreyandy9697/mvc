@@ -107,6 +107,7 @@ class Lucky extends AbstractController
     public function jsonNumber(): JsonResponse
     {
         $monthNum = random_int(1, 12);
+        $meddela = random_int(1, 3);
 
         $months = [
             1 => 'Januari',
@@ -123,11 +124,21 @@ class Lucky extends AbstractController
             12 => 'December',
         ];
 
+        // Måndadsnamns på svenska
         $monthName = $months[$monthNum];
+
+        // Dagens tid och datum
         $day = date('Y-m-d');
         $time = date('H:i:s');
 
-        $message = "Viktigt meddelande!!! Idag är det $day, klockan $time! Planera din semester för $monthName månaden nu!!";
+        // Meddelande
+        $messages = [
+            1 => "Viktigt meddelande!!! Idag är det $day, klockan $time! Planera din semester för $monthName månaden nu!!!",
+            2 => "Viktigt meddelande!!! Idag är det $day, klockan $time! Din semestermånad är $monthName",
+            3 => "Viktigt meddelande!!! Idag är det $day, klockan $time! Sist du hade semester var i $monthName förra året! Planera din nästa semester nu!!!",
+        ];
+
+        $message = $messages[$meddela];
 
         return new JsonResponse([
             'Semester planering för månad' => $monthNum,
