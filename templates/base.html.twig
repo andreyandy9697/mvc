@@ -3,33 +3,52 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">-->
-
         <link rel="icon" href="{{ asset('img/kursicon.png') }}">
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <header class="header">
+                <img class="logo" src="img/favicon.png" alt="Kurs icon">
+                <span class="title">Kursen MVC</span>
+            </header>
+
+            <style>
+                body {
+                    background-image:
+                        linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+                        url('{{ asset('img/01_Anemon.jpg') }}');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    color: white;
+                }
+            </style>
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+
     </head>
 
     <body>
-        <header class="site-header" style="background-image: url({{ asset('img/05_2355Col.jpg') }})">
-            <span class="site-title">MVC-kursen</span>
-        </header>
-        <nav>
+
+        <nav class="navbar" style="background-image: linear-gradient(to top, rgba(255,255,255,0.7), rgba(0,0,0,0.7)), url('{{ asset('img/05_2355Col.jpg') }}'); background-size: cover; background-position: center;">
             <ul>
                 <li><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="{{ path('about') }}">About</a></li>
                 <li><a href="{{ path('report') }}">Report</a></li>
                 <li><a href="{{ path('lucky') }}">Lucky</a></li>
+                <li><a href="{{ path('api') }}">API</a></li>
             </ul>
         </nav>
 
         {% block body %}{% endblock %}
     </body>
+
+    {% include 'footer.html.twig' %}
 </html>

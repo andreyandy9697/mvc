@@ -1,46 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html.twig" %}
 
-    <link rel="icon" href="{{ asset('img/kursicon.png') }}">
-    <title>Dykresor i {{ monthStr }}</title>
+{% block title %}Lucky{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
     <style>
         body {
-            background-image: url('{{ asset('img/01_Anemon.jpg') }}');
-            background-size: center;
+            background-image:
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('{{ asset('img/01_Anemon.jpg') }}');
+            background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
         }
+
         table {
             margin: 0 auto;
         }
     </style>
-</head>
+{% endblock %}
 
-<body>
-
-    <div class="gallery" style="text-align: center; color: red; margin-bottom: 20px;">
-            <h1>VARNING !!!</h1>
-            <h1>Inga dykresor planerade i: {{ monthStr }}</h1>
-            <h1>Avbryt allt annat och börja planera nu!!!</h1>
+{% block body %}
+    <article>
+    <div class="gallery" style="text-align: center; color:rgb(43, 247, 70); margin-bottom: 20px;">
+        <h1>VARNING !!!</h1>
+        <h1>Ingen semester planerat i: {{ monthStr }}</h1>
+        <h1>Avbryt allt annat och planera din semester omgående!!!</h1>
         <img src="{{ asset(currentImage) }}" alt="Image for {{ monthStr }}" style="width: 960px;">
     </div>
 
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
-            <th colspan="8" style="text-align:center; font-size:24px; color: red;">{{ monthStr }} {{ yearStr }}</th>
+            <th colspan="8" style="text-align:center; font-size:24px; color:rgb(117, 234, 255);">{{ monthStr }} {{ yearStr }}</th>
         </tr>
         <tr>
-            <th style="width: 4%; text-align: center; color:rgb(0, 0, 0);">V.</th>
-            <th style="width: 12%; text-align: center; color: red;">Måndag</th>
-            <th style="width: 12%; text-align: center; color: red;">Tisdag</th>
-            <th style="width: 12%; text-align: center; color: red;">Onsdag</th>
-            <th style="width: 12%; text-align: center; color: red;">Torsdag</th>
-            <th style="width: 12%; text-align: center; color: red;">Fredag</th>
-            <th style="width: 12%; text-align: center; color: red;">Lördag</th>
-            <th style="width: 12%; text-align: center; color: red;">Söndag</th>
+            <th style="width: 4%; text-align: center; color:rgb(117, 234, 255);">V.</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Måndag</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Tisdag</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Onsdag</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Torsdag</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Fredag</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Lördag</th>
+            <th style="width: 12%; text-align: center; color:rgb(117, 234, 255);">Söndag</th>
         </tr>
         {{ calendarRows|raw }}
     </table>
-
-</body>
-</html>
+    </article>
+{% endblock %}

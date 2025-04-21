@@ -1,0 +1,61 @@
+/** footer.css */
+
+/*
+ * Set colors and size.
+ */
+ .footer {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border-top: 1px solid #ccc;
+    color: #e6f703;
+    padding: 0 1em;
+
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+    font-size: 1.0em;
+}
+
+/*
+ * Style the links.
+ */
+
+.footer a {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    color: #df8c20;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #040c2c;
+    background-color: #81912b;
+}
+
+/*
+ * Style the content.
+ */
+.box h4 {
+    border-bottom: 4px solid #641414;
+}
+
+.final {
+    text-align: center;
+}
+
+/*
+ * Style the rows and columns.
+ */
+.footer .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.footer .row > .col3 {
+    width: 100%;
+}
+
+.footer .row > .col1 {
+    width: 100%;
+}

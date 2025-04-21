@@ -1,0 +1,35 @@
+/** navbar.css */
+
+/*
+ * Add colors and borders.
+ */
+ .navbar {
+    background-size: cover;
+    background-position: center;
+    color: #380608;
+    border-top: 4px solid #222946;
+    text-align: center;
+    font-size: 1.6em;
+}
+
+/*
+ * Style links.
+ */
+.navbar a {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    color: #380608;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: #040c2c;
+    background-color: #81912b;
+}
+
+/*
+ * Put the li items on a line.
+ */
+.navbar li {
+    display: inline;
+}

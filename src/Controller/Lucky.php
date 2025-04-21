@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,7 +12,7 @@ class Lucky extends AbstractController
     #[Route('/lucky', name: 'lucky')]
     public function number(): Response
     {
-        $month_dyk = str_pad(random_int(1, 12), 2, '0', STR_PAD_LEFT);
+        $semester = str_pad(random_int(1, 12), 2, '0', STR_PAD_LEFT);
 
         $monthImages = [
             '01' => 'img/01_Anemon.jpg',
@@ -28,12 +29,30 @@ class Lucky extends AbstractController
             '12' => 'img/12_jag.jpg',
         ];
 
-        $currentImage = $monthImages[$month_dyk] ?? 'img/default.jpg';
+        $months = [
+            1 => 'Januari',
+            2 => 'Februari',
+            3 => 'Mars',
+            4 => 'April',
+            5 => 'Maj',
+            6 => 'Juni',
+            7 => 'Juli',
+            8 => 'Augusti',
+            9 => 'September',
+            10 => 'Oktober',
+            11 => 'November',
+            12 => 'December',
+        ];
 
-        $date = date('Y') . '-' . $month_dyk . '-01';
+        // Svenska månadsnamn
+        $monthName = $months[(int)$semester];
+
+        $currentImage = $monthImages[$semester] ?? 'img/default.jpg';
+
+        $date = date('Y') . '-' . $semester . '-01';
         $timestamp = strtotime($date);
         $firstDayOfMonth = strtotime(date('Y-m-01', $timestamp));
-        $monthStr = date('F', $firstDayOfMonth);
+        $monthStr = $monthName;
         $yearStr = date('Y', $firstDayOfMonth);
 
         $firstDayOfWeek = date('N', $firstDayOfMonth);
@@ -46,26 +65,26 @@ class Lucky extends AbstractController
 
         while ($currentDay <= $endDate) {
             $weekNum = date('W', $currentDay);
-            $calendarRows .= "<tr><td style='text-align:center; color:rgb(0, 0, 0);'>{$weekNum}</td>";
+            $calendarRows .= "<tr><td style='text-align:center; color:rgb(117, 234, 255);'>{$weekNum}</td>";
 
             for ($i = 0; $i < 7; $i++) {
                 $dayNum = date('j', $currentDay);
                 $dayOfYear = date('z', $currentDay) + 1;
                 $dayName = date('l', $currentDay);
-                $monthCheck = date('m', $currentDay) === $month_dyk;
+                $monthCheck = date('m', $currentDay) === $semester;
 
                 $style = 'text-align:center; color: yellow; vertical-align:middle;';
                 if (!$monthCheck) {
-                    $style .= ' color:gray;';
+                    $style .= ' color:rgb(110, 187, 129)';
                 }
                 if ($dayName === 'Sunday') {
-                    $style .= ' color:red;';
+                    $style .= ' color:rgb(255, 52, 52);';
                 }
 
                 $calendarRows .= "
                     <td style=\"$style\">
                         <div style='font-size: 18px; font-weight: bold;'>$dayNum</div>
-                        <div style='font-size: 12px; color: grey;'>$dayOfYear</div>
+                        <div style='font-size: 12px; color:rgb(110, 187, 129);'>$dayOfYear</div>
                     </td>";
 
                 $currentDay = strtotime('+1 day', $currentDay);
@@ -77,10 +96,59 @@ class Lucky extends AbstractController
         return $this->render('lucky_calendar.html.twig', [
             'monthStr' => $monthStr,
             'yearStr' => $yearStr,
-            'monthNum' => $month_dyk,
+            'monthNum' => $semester,
             'currentImage' => $currentImage,
             'calendarRows' => $calendarRows,
         ]);
 
+    }
+
+    #[Route("/api/quote")]
+
+    public function jsonNumber(): Response
+    {
+        $dagens_uppgift = random_int(1, 12);
+
+        $months = [
+            1 => 'Januari',
+            2 => 'Februari',
+            3 => 'Mars',
+            4 => 'April',
+            5 => 'Maj',
+            6 => 'Juni',
+            7 => 'Juli',
+            8 => 'Augusti',
+            9 => 'September',
+            10 => 'Oktober',
+            11 => 'November',
+            12 => 'December',
+        ];
+
+        // Måndadsnamns på svenska
+        $monthName = $months[$dagens_uppgift];
+
+        // Dagens tid och datum
+        $day = date('Y-m-d');   // Format: YYYY-MM-DD
+        $time = date('H:i:s');  // Format: HH:MM:SS
+
+        // Meddelanden
+        $message1 = "Viktigt meddelande!!!";
+        $message2 = "Idag är det $day, klockan $time!";
+        $message3 = "Planera din semester för $monthName månaden nu!!";
+
+        $message = $message1 . " " . $message2 . " " . $message3;
+
+        $data = [
+            'Semester planering för månad' => $dagens_uppgift,
+            'Planerings meddelande' => 'Planera din semester nu!!',
+        ];
+
+        // JSON data
+        $data = [
+            'Semester planering för månad' => $dagens_uppgift,
+            'Planerings meddelande' => $message,
+        ];
+
+        return new JsonResponse($data);
     }
 }

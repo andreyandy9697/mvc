@@ -1,65 +1,108 @@
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
 body {
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 100%;
 }
 
 h1 {
     border-bottom: 4px double #ccc;
 }
 
-/* Basic styles for the layout */
+.main{
+    border: 1px solid #e7ffc7;
+    padding: 1em;
+    color: #fdcafb;
+    max-height: 1000px;
+    overflow-y: auto;
+    padding-right: 1em; /* optional scrollbar spacing */
+
+}
+
+.article {
+    overflow: auto;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+    border-left: 1px solid #e7ffc7;
+    border-right: 1px solid #e7ffc7;
+    border-top: 1px solid #e7ffc7;
+    border-bottom: 1px solid #e7ffc7;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/** two_column_layout.css */
+
 .two-col-layout {
-    display: flex; /* Create a flex container */
-    justify-content: space-between; /* Space between the aside and main */
-    gap: 30px; /* Optional: space between the columns */
+    display: flex;
+    flex-direction: row;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
-/* Style for the aside section */
-.aside2 {
-    width: 25%; /* Set the width of the aside (can be adjusted) */
-    background-color: #f4f4f4; /* Optional: background color */
-    padding: 20px; /* Padding for spacing inside the aside */
+/* Main and Aside base widths */
+.two-col-layout > .main {
+    width: 75%; /* 12/16 */
 }
 
-/* Style for the main content area */
-.main {
-    width: 70%; /* Set the width of the main content (can be adjusted) */
-    padding: 20px; /* Padding for spacing inside the main section */
+.two-col-layout > .aside {
+    width: 25%; /* 4/16 */
 }
 
-/* List styling for the aside navigation */
-.aside2 ol {
-    padding-left: 20px;
+/* Default: aside on the right */
+.two-col-layout.aside-right > .main {
+    order: 1;
+}
+.two-col-layout.aside-right > .aside {
+    order: 2;
 }
 
-.aside2 ol li {
-    margin-bottom: 10px;
+/* Aside on the left */
+.two-col-layout.aside-left > .main {
+    order: 2;
+}
+.two-col-layout.aside-left > .aside {
+    order: 1;
 }
 
-/* Make the image in the main content responsive */
-.figure img {
-    max-width: 100%; /* Ensure the image scales based on the width */
-    height: auto; /* Maintain aspect ratio */
+.aside {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+    border: 1px solid #e7ffc7;
+    padding: 1em;
+    color: #fdcafb;
 }
 
-/* Add a little styling to the headers inside the main section */
-header h2 {
-    font-size: 1.5rem;
-    margin-top: 20px;
+/* Aside headings styling */
+.aside h1,
+.aside h2,
+.aside h3,
+.aside h4,
+.aside h5 {
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 4px double #ccc;
+    margin-top: 1em;
 }
 
-/* Optional: Style for the links in the aside */
-.aside2 a {
-    text-decoration: none;
-    color: #000;
-}
-
-.aside2 a:hover {
-    color: #007bff;
-}
-
-/* Style for the main content paragraphs */
-.main p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
+/* Heading colors */
+.aside h1 { color: #e6f703; }
+.aside h2 { color: #e6f703; }
+.aside h3 { color: #03b11a; border-bottom-style: dashed; }
+.aside h4 { color: #f703c2; border-bottom-style: dotted; }
+.aside h5 { color: #f71303; border-bottom-style: groove; }
