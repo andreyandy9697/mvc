@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="icon" href="{{ asset('img/kursicon.png') }}">
+    <title>Dykresor i {{ monthStr }}</title>
+    <style>
+        body {
+            background-image: url('{{ asset('img/01_Anemon.jpg') }}');
+            background-size: center;
+            background-position: center;
+        }
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="gallery" style="text-align: center; color: red; margin-bottom: 20px;">
+            <h1>VARNING !!!</h1>
+            <h1>Inga dykresor planerade i: {{ monthStr }}</h1>
+            <h1>Avbryt allt annat och börja planera nu!!!</h1>
+        <img src="{{ asset(currentImage) }}" alt="Image for {{ monthStr }}" style="width: 960px;">
+    </div>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th colspan="8" style="text-align:center; font-size:24px; color: red;">{{ monthStr }} {{ yearStr }}</th>
+        </tr>
+        <tr>
+            <th style="width: 4%; text-align: center; color:rgb(0, 0, 0);">V.</th>
+            <th style="width: 12%; text-align: center; color: red;">Måndag</th>
+            <th style="width: 12%; text-align: center; color: red;">Tisdag</th>
+            <th style="width: 12%; text-align: center; color: red;">Onsdag</th>
+            <th style="width: 12%; text-align: center; color: red;">Torsdag</th>
+            <th style="width: 12%; text-align: center; color: red;">Fredag</th>
+            <th style="width: 12%; text-align: center; color: red;">Lördag</th>
+            <th style="width: 12%; text-align: center; color: red;">Söndag</th>
+        </tr>
+        {{ calendarRows|raw }}
+    </table>
+
+</body>
+</html>

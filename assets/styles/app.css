@@ -1,0 +1,65 @@
+body {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+h1 {
+    border-bottom: 4px double #ccc;
+}
+
+/* Basic styles for the layout */
+.two-col-layout {
+    display: flex; /* Create a flex container */
+    justify-content: space-between; /* Space between the aside and main */
+    gap: 30px; /* Optional: space between the columns */
+}
+
+/* Style for the aside section */
+.aside2 {
+    width: 25%; /* Set the width of the aside (can be adjusted) */
+    background-color: #f4f4f4; /* Optional: background color */
+    padding: 20px; /* Padding for spacing inside the aside */
+}
+
+/* Style for the main content area */
+.main {
+    width: 70%; /* Set the width of the main content (can be adjusted) */
+    padding: 20px; /* Padding for spacing inside the main section */
+}
+
+/* List styling for the aside navigation */
+.aside2 ol {
+    padding-left: 20px;
+}
+
+.aside2 ol li {
+    margin-bottom: 10px;
+}
+
+/* Make the image in the main content responsive */
+.figure img {
+    max-width: 100%; /* Ensure the image scales based on the width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Add a little styling to the headers inside the main section */
+header h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+/* Optional: Style for the links in the aside */
+.aside2 a {
+    text-decoration: none;
+    color: #000;
+}
+
+.aside2 a:hover {
+    color: #007bff;
+}
+
+/* Style for the main content paragraphs */
+.main p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
