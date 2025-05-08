@@ -23,3 +23,7 @@ bash: "Symfony server:start"
 
 Då ska sidan vara tillgängligt lokalt (vid http://localhost:8000)
 
+
+# Kmom02
+
+En implementation av ett enkelt kortspel
