@@ -124,7 +124,7 @@ class Lucky extends AbstractController
             12 => 'December',
         ];
 
-        // Måndadsnamns på svenska
+        // Månadsnamn på svenska
         $monthName = $months[$monthNum];
 
         // Dagens tid och datum
