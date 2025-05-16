@@ -1,0 +1,11 @@
+{
+  // treat Twig files as HTML so the CSS linter won’t choke
+  "files.associations": {
+    "*.twig": "html"
+  },
+
+  // disable CSS/SCSS/LESS validation in those HTML-associated files
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false
+}

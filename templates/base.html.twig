@@ -7,16 +7,16 @@
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-            <header class="header">
-                <img class="logo" src="img/favicon.png" alt="Kurs icon">
-                <span class="title">Kursen MVC</span>
-            </header>
 
             <style>
                 body {
                     background-image:
-                        linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
-                        url('{{ asset('img/01_Anemon.jpg') }}');
+                        linear-gradient(
+                            to bottom,
+                            rgba(0, 0, 0, 0.5),
+                            rgba(0, 0, 0, 0.6)
+                            ),
+                        url({{ asset('img/01_Anemon.jpg') }});
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -36,13 +36,29 @@
     </head>
 
     <body>
+        <header class="header">
+            <img class="logo" src="img/favicon.png" alt="Kurs icon">
+            <span class="title">Kursen MVC</span>
+        </header>
 
-        <nav class="navbar" style="background-image: linear-gradient(to top, rgba(255,255,255,0.7), rgba(0,0,0,0.7)), url('{{ asset('img/05_2355Col.jpg') }}'); background-size: cover; background-position: center;">
+        <nav class="navbar"
+            style="
+                background-image:
+                linear-gradient(to top, rgba(255,255,255,0.7), rgba(0,0,0,0.7)),
+                url({{ asset('img/05_2355Col.jpg') }});
+                background-size: cover;
+                background-position: center;
+            ">
+
             <ul>
                 <li><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="{{ path('about') }}">About</a></li>
                 <li><a href="{{ path('report') }}">Report</a></li>
                 <li><a href="{{ path('lucky') }}">Lucky</a></li>
+                <li><a href="{{ path('pig_init_get') }}">Pig Game (init)</a></li>
+                <li><a href="{{ path('pig_play') }}">Pig Play</a></li>
+                <li><a href="{{ path('kortspel_init_get') }}">Kortspel(init)</a></li>
+                <li><a href="{{ path('kortspel_play') }}">Spela Kortspel</a></li>
                 <li><a href="{{ path('api') }}">API</a></li>
             </ul>
         </nav>
@@ -50,5 +66,5 @@
         {% block body %}{% endblock %}
     </body>
 
-    {% include 'WebPage/footer.html.twig' %}
+    {% include 'Webpage/footer.html.twig' %}
 </html>

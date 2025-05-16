@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Kortspel{% endblock %}
+
+{% block main %}
+<h1>Dra kort</h1>
+
+<p>Du drog {{ num_cards }} kort. Här är dina kort.</p>
+
+<ul>
+{% for draw in cards %}
+    <li>{{ draw }}</li>
+{% endfor %}
+</ul>
+
+<p>Try to draw
+    <a href="{{ path('test_cardshand', {num: 5}) }}">5</a>
+    or
+    <a href="{{ path('test_cardshand', {num: 10}) }}">10</a>
+    cards.
+</p>
+{% endblock %}

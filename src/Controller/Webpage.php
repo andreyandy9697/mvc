@@ -7,27 +7,27 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-class WebPage extends AbstractController
+class Webpage extends AbstractController
 {
     // About Route
     #[Route('/about', name: 'about')]
     public function about(): Response
     {
-        return $this->render('WebPage/about.html.twig');
+        return $this->render('Webpage/about.html.twig');
     }
 
     // Home Route
     #[Route('/', name: 'home')]
     public function home(): Response
     {
-        return $this->render('WebPage/home.html.twig');
+        return $this->render('Webpage/home.html.twig');
     }
 
     // Report Route
     #[Route('/report', name: 'report')]
     public function report(): Response
     {
-        return $this->render('WebPage/report.html.twig');
+        return $this->render('Webpage/report.html.twig');
     }
 
     // API Route
@@ -47,7 +47,7 @@ class WebPage extends AbstractController
             }
         }
 
-        return $this->render('WebPage/api.html.twig', [
+        return $this->render('Webpage/api.html.twig', [
             'routes' => $routeList,
         ]);
     }

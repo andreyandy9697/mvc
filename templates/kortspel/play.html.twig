@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kortspel{% endblock %}
+
+{% block body %}
+<h1>Kortspel [IGÅNG]</h1>
+
+<p>Dra kort eller spara värdet.</p>
+
+<form method="post" action="">
+    <p>
+        {# <input type="submit" name="draw" value="Draw"> #}
+        <input type="submit" name="draw" value="Draw"
+            onClick="this.form.action='{{ path('kortspel_draw') }}';"
+        >
+
+        {# <input type="submit" name="save" value="Save"> #}
+        <input type="submit" name="save" value="Save"
+            onClick="this.form.action='{{ path('kortspel_save') }}';"
+        >
+
+        {# <input type="submit" name="restart" value="Restart"> #}
+        <input type="submit" name="restart" value="Restart"
+           onClick="this.form.action='{{ path('kortspel_init_get') }}';this.form.method='get';"
+        >
+    </p>
+</form>
+
+  <h2>Your hand:</h2>
+  <ul>
+    {% for item in kortspelCards %}
+      <li>{{ item.value }} ({{ item.card }})</li>
+    {% endfor %}
+  </ul>
+
+  {{ include('flash.html.twig') }}
+
+  <p>Du spelar med {{ kortspelCards|length }} kort.</p>
+  <p>Round: {{ kortspelRound }}</p>
+  <p>Total: {{ kortspelTotal }}</p>
+
+{% endblock %}

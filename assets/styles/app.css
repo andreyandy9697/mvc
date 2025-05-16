@@ -106,3 +106,16 @@ h1 {
 .aside h3 { color: #03b11a; border-bottom-style: dashed; }
 .aside h4 { color: #f703c2; border-bottom-style: dotted; }
 .aside h5 { color: #f71303; border-bottom-style: groove; }
+
+/* apply to *all* links on the page */
+a {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    color: #df8c20;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #040c2c;
+    background-color: #81912b;
+}
