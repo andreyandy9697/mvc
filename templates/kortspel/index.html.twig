@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kortspel{% endblock %}
+
+{% block body %}
+<div class="two-col-layout aside-left">
+    <aside class="aside">
+        <article class="article">
+            <h2>Kortspel</h2>
+            <p>Här hittar du alla undersidor för denna uppgift:</p>
+            <ul>
+                <li><h2><a href="{{ path('kortspel_init_get') }}">Initiera spel</a></h2></li>
+                <li><h2><a href="{{ path('kortspel_play') }}">Spel</a></h2></li>
+                <li><h2><a href="{{ path('session_index') }}">Debugga session</a></h2></li>
+            </ul>
+        </article>
+    </aside>
+
+    <main class="main">
+        <article class="article">
+            <header>
+                <h2>UML-klassdiagram</h2>
+                <img src="{{ asset('images/uml_deck.png') }}" alt="UML klassdiagram för Card & Deck">
+                <p>Här ser du klassdiagram.</p>
+            </header>
+
+            <p> Beskrivning: </p>
+        </article>
+    </main>
+</div>
+{% endblock %}

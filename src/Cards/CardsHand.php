@@ -8,19 +8,7 @@ class CardsHand
 {
     private $hand = [];
 
-    // public function add(Cards $card): void
-    // {
-    //     $this->hand[] = $card;
-    // }
-
-    // public function draw(): void
-    // {
-    //     foreach ($this->hand as $card) {
-    //         $card->draw();
-    //     }
-    // }
-
-    public function draw(int $count): void
+     public function draw(int $count): void
     {
         $deckSize = count(CardsGraphic::DECK);
         if ($count < 1 || $count > $deckSize) {

@@ -155,4 +155,11 @@ class CardsGameController extends AbstractController
 
         return $this->redirectToRoute('kortspel_play');
     }
+
+    // landningssida "card"
+    #[Route("/kortspel", name: "kortspel_index")]
+    public function index(): Response
+    {
+        return $this->render('kortspel/index.html.twig');
+    }
 }

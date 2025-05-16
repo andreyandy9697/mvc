@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Session Debug{% endblock %}
+
+{% block body %}
+    <main class="main">
+    <article class="article">
+        <h1>Sessionens Data</h1>
+        <table>
+        <thead>
+            <tr><th>Namn</th><th>Värde</th></tr>
+        </thead>
+        <tbody>
+            {% for key, value in sessionData %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>
+                <pre>{{ dump(value) }}</pre>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="2">Ingen data i sessionen.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <h2><a href="{{ path('session_delete') }}">Radera sessionen</a></h2>
+    </article>
+</main>
+{% endblock %}
