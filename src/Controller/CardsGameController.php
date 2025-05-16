@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Cards\Cards;
 use App\Cards\CardsGraphic;
 use App\Cards\CardsHand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

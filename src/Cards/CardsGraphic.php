@@ -21,12 +21,11 @@ class CardsGraphic extends Cards
         parent::__construct();
     }
 
-    /**
-     * Returnerar unicode istället för “[n]”.
-     */
+    // unicode
+
     public function getAsString(): string
     {
-        // value is 1–52, so subtract 1 for zero index
+        // 1-52
         return self::DECK[$this->getValue() - 1];
     }
 }
