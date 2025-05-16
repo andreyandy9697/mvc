@@ -14,6 +14,7 @@ class Cards
     public function draw(): int
     {
         $this->value = random_int(1, 52);
+
         return $this->value;
     }
 
@@ -24,6 +25,6 @@ class Cards
 
     public function getAsString(): string
     {
-        return (string)$this->value;
+        return (string) $this->value;
     }
 }

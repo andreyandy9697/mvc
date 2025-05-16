@@ -12,7 +12,7 @@ class SessionController extends AbstractController
     #[Route('/session', name: 'session_index')]
     public function index(SessionInterface $session): Response
     {
-        // Dumpa allt om sessionen för debugging
+        // dumpa allt om sessionen för debugging
         $data = $session->all();
 
         return $this->render('session/index.html.twig', [
@@ -20,6 +20,7 @@ class SessionController extends AbstractController
         ]);
     }
 
+    // raderar session
     #[Route('/session/delete', name: 'session_delete')]
     public function delete(SessionInterface $session): Response
     {

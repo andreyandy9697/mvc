@@ -45,20 +45,20 @@ class Lucky extends AbstractController
         ];
 
         // Svenska månadsnamn
-        $monthName = $months[(int)$semester];
+        $monthName = $months[(int) $semester];
 
         $currentImage = $monthImages[$semester] ?? 'img/default.jpg';
 
-        $date = date('Y') . '-' . $semester . '-01';
+        $date = date('Y').'-'.$semester.'-01';
         $timestamp = strtotime($date);
         $firstDayOfMonth = strtotime(date('Y-m-01', $timestamp));
         $monthStr = $monthName;
         $yearStr = date('Y', $firstDayOfMonth);
 
         $firstDayOfWeek = date('N', $firstDayOfMonth);
-        $startDate = ($firstDayOfWeek == 1) ? $firstDayOfMonth : strtotime('last Monday', $firstDayOfMonth);
+        $startDate = (1 === $firstDayOfWeek) ? $firstDayOfMonth : strtotime('last Monday', $firstDayOfMonth);
         $lastDayOfMonth = strtotime(date('Y-m-t', $firstDayOfMonth));
-        $endDate = (date('N', $lastDayOfMonth) == 7) ? $lastDayOfMonth : strtotime('next Sunday', $lastDayOfMonth);
+        $endDate = (7 === date('N', $lastDayOfMonth)) ? $lastDayOfMonth : strtotime('next Sunday', $lastDayOfMonth);
 
         $calendarRows = '';
         $currentDay = $startDate;
@@ -67,7 +67,7 @@ class Lucky extends AbstractController
             $weekNum = date('W', $currentDay);
             $calendarRows .= "<tr><td style='text-align:center; color:rgb(117, 234, 255);'>{$weekNum}</td>";
 
-            for ($i = 0; $i < 7; $i++) {
+            for ($i = 0; $i < 7; ++$i) {
                 $dayNum = date('j', $currentDay);
                 $dayOfYear = date('z', $currentDay) + 1;
                 $dayName = date('l', $currentDay);
@@ -77,14 +77,14 @@ class Lucky extends AbstractController
                 if (!$monthCheck) {
                     $style .= ' color:rgb(110, 187, 129)';
                 }
-                if ($dayName === 'Sunday') {
+                if ('Sunday' === $dayName) {
                     $style .= ' color:rgb(255, 52, 52);';
                 }
 
                 $calendarRows .= "
-                    <td style=\"$style\">
-                        <div style='font-size: 18px; font-weight: bold;'>$dayNum</div>
-                        <div style='font-size: 12px; color:rgb(110, 187, 129);'>$dayOfYear</div>
+                    <td style=\"{$style}\">
+                        <div style='font-size: 18px; font-weight: bold;'>{$dayNum}</div>
+                        <div style='font-size: 12px; color:rgb(110, 187, 129);'>{$dayOfYear}</div>
                     </td>";
 
                 $currentDay = strtotime('+1 day', $currentDay);
@@ -100,10 +100,9 @@ class Lucky extends AbstractController
             'currentImage' => $currentImage,
             'calendarRows' => $calendarRows,
         ]);
-
     }
 
-    #[Route("/api/quote", name: "api_quote")]
+    #[Route('/api/quote', name: 'api_quote')]
     public function jsonNumber(): JsonResponse
     {
         $monthNum = random_int(1, 12);
@@ -133,9 +132,9 @@ class Lucky extends AbstractController
 
         // Meddelande
         $messages = [
-            1 => "Viktigt meddelande!!! Idag är det $day, klockan $time! Planera din semester för $monthName månaden nu!!!",
-            2 => "Viktigt meddelande!!! Idag är det $day, klockan $time! Din semestermånad är $monthName",
-            3 => "Viktigt meddelande!!! Idag är det $day, klockan $time! Sist du hade semester var i $monthName förra året! Planera din nästa semester nu!!!",
+            1 => "Viktigt meddelande!!! Idag är det {$day}, klockan {$time}! Planera din semester för {$monthName} månaden nu!!!",
+            2 => "Viktigt meddelande!!! Idag är det {$day}, klockan {$time}! Din semestermånad är {$monthName}",
+            3 => "Viktigt meddelande!!! Idag är det {$day}, klockan {$time}! Sist du hade semester var i {$monthName} förra året! Planera din nästa semester nu!!!",
         ];
 
         $message = $messages[$meddela];

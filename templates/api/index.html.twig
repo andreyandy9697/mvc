@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}API – Översikt{% endblock %}
+
+{% block body %}
+<main class="main">
+  <article class="article">
+    <h1>API – Översikt</h1>
+    <p>Alla JSON-endpoints:</p>
+    <ul>
+      <li><strong>GET  /api/deck</strong><br>
+        Returnerar hela kortleken (ordnad) som JSON.</li>
+      <li><strong>POST /api/deck/shuffle</strong><br>
+        Blandar om kortleken, sparar i sessionen och returnerar den som JSON.</li>
+      <li><strong>POST /api/deck/draw</strong><br>
+        Drar 1 kort från sessionens lek och returnerar:<br>
+        <code>drawn</code> (lista med 1 kort), <code>remaining</code> (antal kvar).</li>
+      <li><strong>POST /api/deck/draw/{number}</strong><br>
+        Drar flera kort enligt ovan.</li>
+      <li><strong>POST /api/deck/deal/{players}/{cards}</strong><br>
+        Delar ut {cards} kort till {players} spelare och returnerar:<br>
+        <code>hands</code> (objekt med nycklar "Player 1", "Player 2" …),<br>
+        <code>remaining</code> (antal kvar).</li>
+    </ul>
+
+    <h2 style="text-align:center;">API- och webb-routes</h2>
+    <table border="1" cellpadding="10" cellspacing="0" style="margin:auto; color:#2bf746;">
+      <thead>
+        <tr><th>Route Name</th><th>Path</th></tr>
+      </thead>
+      <tbody>
+        {% for route in routes %}
+          <tr>
+            <td>{{ route.name }}</td>
+            <td><code>{{ route.path }}</code></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </article>
+</main>
+{% endblock %}

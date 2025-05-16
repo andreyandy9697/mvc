@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dra Kort{% endblock %}
+
+{% block body %}
+    <main class="main">
+    <article class="article">
+        <h1>Dra kort</h1>
+
+        <p><strong>Kort dragna:</strong></p>
+        <ul>
+            {% for card in cards %}
+            <li class="card">{{ card }}</li>
+            {% endfor %}
+        </ul>
+
+        <p>Antal kort kvar: <strong>{{ remaining }}</strong></p>
+
+        <p>
+            <a href="{{ path('card_deck_draw') }}">Dra ett till</a> |
+            <a href="{{ path('card_deck_shuffle') }}">Blanda om</a> |
+        </p>
+        </article>
+</main>
+{% endblock %}
